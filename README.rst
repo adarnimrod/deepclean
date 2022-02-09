@@ -1,6 +1,22 @@
 Deep clean
 ##########
 
+.. image:: https://git.shore.co.il/nimrod/deepclean/badges/main/pipeline.svg
+    :target: https://git.shore.co.il/nimrod/deepclean/-/commits/main
+    :alt: pipeline status
+
+Clean old versions of Docker images.
+
+Usage
+-----
+
+.. code:: shell
+
+   usage: deepclean [-h]
+   Clean old versions of Docker images.
+   optional arguments:
+     -h, --help  show this help message and exit
+
 License
 -------
 
