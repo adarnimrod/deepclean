@@ -124,7 +124,7 @@ def deepclean(
             print(f"Would have removed image {Id}.")
         else:
             print(f"Removing image {Id}.")
-            client.image.remove(Id)
+            client.images.remove(Id)
 
 
 def main():
