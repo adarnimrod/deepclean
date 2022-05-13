@@ -7,15 +7,34 @@ Deep clean
 
 Clean old versions of Docker images.
 
+Explanation
+-----------
+
+Remove old versions of images with same name. In cases where you updated an
+image (from example from :code:`postgres:13` to :code:`postgres:14`) the old
+image is present. Using :code:`docker image prune` won't help in this case
+since the image is still properly tagged.
+
 Usage
 -----
 
 .. code:: shell
 
-   usage: deepclean [-h]
-   Clean old versions of Docker images.
-   optional arguments:
-     -h, --help  show this help message and exit
+    usage: deepclean [-h] [-i INCLUDE] [-e EXCLUDE] [-v] [-V] [-d]
+
+    Clean old versions of Docker images.
+
+    options:
+      -h, --help            show this help message and exit
+      -i INCLUDE, --include INCLUDE
+                            Regular expression of images to exclusively prune.
+      -e EXCLUDE, --exclude EXCLUDE
+                            Regular expression of images to ignore.
+      -v, --verbose         Verbose output
+      -V, --version         show program's version number and exit
+      -d, --dry-run         Dry-run, don't delete
+
+    Regular Docker environment variables (like DOCKER_HOST) can be used.-i and -e can be used multiple times.
 
 License
 -------
