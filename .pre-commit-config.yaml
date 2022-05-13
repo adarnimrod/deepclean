@@ -1,11 +1,11 @@
 ---
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks.git
-    rev: v4.0.1
+    rev: v4.2.0
     hooks:
       - id: check-added-large-files
       - id: check-merge-conflict
-      - id: check-shebang-scripts-are-executable
+      - id: check-toml
       - id: check-yaml
       - id: detect-private-key
       - id: end-of-file-fixer
@@ -18,7 +18,7 @@ repos:
       - id: codespell
 
   - repo: https://github.com/Yelp/detect-secrets.git
-    rev: v1.1.0
+    rev: v1.2.0
     hooks:
       - id: detect-secrets
 
@@ -30,7 +30,7 @@ repos:
         exclude: LICENSE
 
   - repo: https://gitlab.com/devopshq/gitlab-ci-linter.git
-    rev: v1.0.2
+    rev: v1.0.3
     hooks:
       - id: gitlab-ci-linter
         args:
@@ -53,12 +53,12 @@ repos:
       - id: rst-linter
 
   - repo: https://github.com/myint/rstcheck.git
-    rev: master
+    rev: v5.0.0
     hooks:
       - id: rstcheck
 
   - repo: https://github.com/ambv/black.git
-    rev: 21.10b0
+    rev: 22.3.0
     hooks:
       - id: black
         args:
@@ -72,7 +72,7 @@ repos:
         args: ["--filter-files", "--profile", "black"]
 
   - repo: https://github.com/PyCQA/prospector.git
-    rev: 1.6.0
+    rev: 1.7.7
     hooks:
       - id: prospector
         args:
@@ -107,8 +107,39 @@ repos:
             --doctests
         additional_dependencies:
           - flake8-bugbear
+          - flake8-builtins
+          - flake8-comprehensions
+          - flake8-loopy
+          - flake8-pie
+          - flake8-tuple
+          - flake8-warnings
+
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-safety.git
+    rev: v1.2.4
+    hooks:
+      - id: python-safety-dependencies-check
+
+  - repo: https://github.com/asottile/pyupgrade.git
+    rev: v2.32.0
+    hooks:
+      - id: pyupgrade
+
+  - repo: https://github.com/hadialqattan/pycln.git
+    rev: v1.3.2
+    hooks:
+      - id: pycln
+
+  - repo: https://github.com/pycqa/pydocstyle.git
+    rev: 6.1.1
+    hooks:
+      - id: pydocstyle
+
+  - repo: https://github.com/PyCQA/docformatter.git
+    rev: v1.4
+    hooks:
+      - id: docformatter
 
   - repo: https://github.com/mgedmin/check-manifest.git
-    rev: '0.47'
+    rev: '0.48'
     hooks:
       - id: check-manifest
