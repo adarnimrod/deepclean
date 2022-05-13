@@ -3,3 +3,4 @@ include *.txt
 exclude .pre-commit-config.yaml
 exclude .gitlab-ci.yml
 exclude .gitignore
+exclude .env*
