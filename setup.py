@@ -1,3 +1,4 @@
+# noqa: D100
 from setuptools import find_packages, setup
 
 import deepclean
