@@ -46,7 +46,7 @@ def exclude(images, excludes, verbose):
 
 def not_in_use(client, images, verbose):
     """Return the images that aren't in use by containers right now."""
-    in_use_images = [c.image.id for c in client.containers.list()]
+    in_use_images = [c.image.id for c in client.containers.list(all=True)]
     not_in_use_images = images.copy()
     # pylint: disable=invalid-name
     for Id in in_use_images:  # noqa: N806
