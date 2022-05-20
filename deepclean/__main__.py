@@ -92,7 +92,7 @@ def deepclean(
     # First we build a dictionary with the image name as key and the value is
     # an empty list that later will contain the images that have that name.
     images_by_name = {
-        name.split(":")[0]: []
+        docker.utils.parse_repository_tag(name)[0]: []
         for image in images.values()
         for name in image.tags
     }
