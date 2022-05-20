@@ -74,9 +74,9 @@ def normalize_names(images_by_name):
     return copy_of_images
 
 
-def deepclean(
+def deepclean(  # noqa: MC0001
     includes=None, excludes=None, verbose=False, dry_run=False
-):  # noqa: MC0001
+):
     """Clean old versions of Docker images."""
     client = docker.from_env()
     images = {i.id: i for i in client.images.list()}
@@ -125,7 +125,13 @@ def deepclean(
             print(f"Would have removed image {Id}.")
         else:
             print(f"Removing image {Id}.")
-            client.images.remove(Id)
+            try:
+                client.images.remove(Id)
+            except docker.errors.APIError as exc:
+                if exc.status_code == 409:
+                    print(f"Image {Id} has descendant images.")
+                else:
+                    raise exc
 
 
 def main():
