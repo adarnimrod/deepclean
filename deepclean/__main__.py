@@ -52,7 +52,8 @@ def not_in_use(client, images, verbose):
     for Id in in_use_images:  # noqa: N806
         if verbose:
             print(f"Image {Id} is in use, ignoring.")
-        not_in_use_images.pop(Id)
+        if Id in not_in_use_images:
+            not_in_use_images.pop(Id)
     return not_in_use_images
 
 
