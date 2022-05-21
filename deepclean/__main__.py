@@ -101,7 +101,7 @@ def deepclean(  # noqa: MC0001
     # We keep the list of images sorted from most recent to least.
     for image in images.values():
         for tag in image.tags:
-            name = tag.split(":")[0]
+            name = docker.utils.parse_repository_tag(tag)[0]
             images_by_name[name].append(image)
             images_by_name[name].sort(key=image_date, reverse=True)
 
